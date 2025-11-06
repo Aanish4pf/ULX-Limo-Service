@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULXLimo - Premium Chauffeur Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            padding: 30px 0;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #d4af37;
+            text-align: center;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .tagline {
+            text-align: center;
+            color: #d4af37;
+            font-size: 1.1em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23111" width="1200" height="600"/><path fill="%23d4af37" opacity="0.1" d="M0 300 Q300 200 600 300 T1200 300 L1200 600 L0 600 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            color: #fff;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #0a0a0a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #d4af37;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #d4af37;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 40px 30px;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .service-card h3 {
+            color: #d4af37;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        /* Fleet Section */
+        .fleet {
+            padding: 80px 0;
+            background: #000;
+        }
+
+        .fleet-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            padding: 50px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .fleet-card h3 {
+            color: #d4af37;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .car-image-container {
+            width: 100%;
+            height: 400px;
+            background: #000;
+            border: 3px solid #d4af37;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .car-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-placeholder {
+            color: #d4af37;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .image-placeholder p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .fleet-details {
+            color: #fff;
+            font-size: 1.2em;
+            text-align: center;
+            line-height: 2;
+        }
+
+        .fleet-details strong {
+            color: #d4af37;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: #0a0a0a;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 40px;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            color: #d4af37;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .contact-item strong {
+            color: #d4af37;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #d4af37;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 40px;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+        }
+
+        .contact-form h3 {
+            color: #d4af37;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #d4af37;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: #000;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1em;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: #d4af37;
+            color: #000;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            border-top: 2px solid #d4af37;
+            padding: 30px 0;
+            text-align: center;
+            color: #d4af37;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">ULXLIMO</div>
+            <div class="tagline">Premium Chauffeur Services</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Arrive in Style</h1>
+            <p>Experience luxury transportation with professional chauffeur services tailored to your needs</p>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Airport Transfers</h3>
+                    <p>Punctual and comfortable rides to and from the airport, ensuring you never miss a flight</p>
+                </div>
+                <div class="service-card">
+                    <h3>Corporate Travel</h3>
+                    <p>Professional transportation for business meetings, conferences, and executive travel</p>
+                </div>
+                <div class="service-card">
+                    <h3>Weddings</h3>
+                    <p>Make your special day unforgettable with elegant transportation for the bride, groom, and guests</p>
+                </div>
+                <div class="service-card">
+                    <h3>Funerals</h3>
+                    <p>Dignified and respectful transportation services during difficult times</p>
+                </div>
+                <div class="service-card">
+                    <h3>Personal Chauffeur</h3>
+                    <p>Dedicated chauffeur services for your daily transportation needs</p>
+                </div>
+                <div class="service-card">
+                    <h3>Special Occasions</h3>
+                    <p>Celebrate birthdays, anniversaries, proms, and other memorable events in luxury</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fleet">
+        <div class="container">
+            <h2 class="section-title">Our Fleet</h2>
+            <div class="fleet-card">
+                <h3>2023 GMC Yukon XL SLT</h3>
+                <div class="car-image-container">
+                    <img src="car.avif" alt="2023 GMC Yukon XL SLT">
+                </div>
+                <div class="fleet-details">
+                    <p><strong>Capacity:</strong> 8 Passengers</p>
+                    <p><strong>Features:</strong> Spacious luxury SUV with premium comfort, climate control, and ample luggage space</p>
+                    <p style="margin-top: 20px; color: #ccc;">Perfect for group travel, airport transfers, and special events</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <strong>Phone</strong>
+                        <a href="tel:+14164738595">+1 (416) 473-8595</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email</strong>
+                        <a href="mailto:ulxlimo@gmail.com">ulxlimo@gmail.com</a>
+                    </div>
+                    <div class="contact-item" style="margin-top: 40px; color: #ccc;">
+                        <p>Available 24/7 for bookings and inquiries. We look forward to serving you!</p>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ULXLimo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            alert('Thank you for your inquiry! We will contact you shortly at ' + phone);
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
