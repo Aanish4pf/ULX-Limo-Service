@@ -16,6 +16,41 @@
             background: #000;
             color: #fff;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .container {
@@ -27,15 +62,26 @@
         /* Header */
         header {
             background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
-            padding: 30px 0;
+            padding: 20px 0;
             border-bottom: 2px solid #d4af37;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
         }
 
         .logo {
             font-size: 2.5em;
             font-weight: bold;
             color: #d4af37;
-            text-align: center;
             letter-spacing: 3px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
@@ -200,58 +246,81 @@
             background: #0a0a0a;
         }
 
-        .contact-container {
+        .contact-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-cards {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: start;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
-        .contact-info {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-            padding: 40px;
-            border: 2px solid #d4af37;
-            border-radius: 10px;
+        .contact-card {
+            background: linear-gradient(135deg, #d4af37 0%, #c19b2e 100%);
+            padding: 50px 40px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
         }
 
-        .contact-info h3 {
-            color: #d4af37;
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .contact-icon svg {
+            width: 35px;
+            height: 35px;
+            stroke: #000;
+            fill: none;
+        }
+
+        .contact-card h3 {
+            color: #000;
             font-size: 1.8em;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
         }
 
-        .contact-item {
-            margin-bottom: 25px;
-            color: #fff;
-        }
-
-        .contact-item strong {
-            color: #d4af37;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .contact-item a {
-            color: #fff;
+        .contact-card a {
+            color: #000;
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
         }
 
-        .contact-item a:hover {
-            color: #d4af37;
+        .contact-card p {
+            color: rgba(0,0,0,0.7);
+            font-size: 1em;
         }
 
         .contact-form {
             background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-            padding: 40px;
+            padding: 50px;
             border: 2px solid #d4af37;
-            border-radius: 10px;
+            border-radius: 15px;
         }
 
         .contact-form h3 {
             color: #d4af37;
-            font-size: 1.8em;
+            font-size: 2em;
             margin-bottom: 30px;
+            text-align: center;
         }
 
         .form-group {
@@ -315,12 +384,20 @@
                 font-size: 2em;
             }
 
-            .contact-container {
+            .contact-cards {
                 grid-template-columns: 1fr;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+            }
+
+            .logo-img {
+                height: 60px;
             }
         }
     </style>
@@ -328,19 +405,22 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo">ULXLIMO</div>
+            <div class="header-content">
+                <img src="logo.png" alt="ULXLimo Logo" class="logo-img">
+                <div class="logo">ULXLIMO</div>
+            </div>
             <div class="tagline">Premium Chauffeur Services</div>
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero fade-in">
         <div class="container">
             <h1>Arrive in Style</h1>
             <p>Experience luxury transportation with professional chauffeur services tailored to your needs</p>
         </div>
     </section>
 
-    <section class="services">
+    <section class="services fade-in">
         <div class="container">
             <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
@@ -372,7 +452,7 @@
         </div>
     </section>
 
-    <section class="fleet">
+    <section class="fleet fade-in">
         <div class="container">
             <h2 class="section-title">Our Fleet</h2>
             <div class="fleet-card">
@@ -389,22 +469,34 @@
         </div>
     </section>
 
-    <section class="contact">
+    <section class="contact fade-in">
         <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get in Touch</h3>
-                    <div class="contact-item">
-                        <strong>Phone</strong>
+            <h2 class="section-title">Ready to Experience Luxury?</h2>
+            <p style="text-align: center; color: #ccc; font-size: 1.2em; max-width: 800px; margin: 0 auto 50px;">Book your premium chauffeur service today and travel in style and comfort. Whether it's an airport transfer, corporate event, or special occasion, ULX Limo is here to serve you.</p>
+            
+            <div class="contact-wrapper">
+                <div class="contact-cards">
+                    <div class="contact-card slide-in-left">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="2.5">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <h3>Call Us</h3>
                         <a href="tel:+14164738595">+1 (416) 473-8595</a>
+                        <p>Available 24/7</p>
                     </div>
-                    <div class="contact-item">
-                        <strong>Email</strong>
+
+                    <div class="contact-card slide-in-right">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" stroke-width="2.5">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Email Us</h3>
                         <a href="mailto:ulxlimo@gmail.com">ulxlimo@gmail.com</a>
-                    </div>
-                    <div class="contact-item" style="margin-top: 40px; color: #ccc;">
-                        <p>Available 24/7 for bookings and inquiries. We look forward to serving you!</p>
+                        <p>Quick response guaranteed</p>
                     </div>
                 </div>
 
@@ -451,6 +543,26 @@
             alert('Thank you for your inquiry! We will contact you shortly at ' + phone);
             e.target.reset();
         }
+
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+            animatedElements.forEach(el => observer.observe(el));
+        });
     </script>
 </body>
 </html>
